@@ -4,21 +4,28 @@ import time
 from random_click import clickfunktion
 from read_result import read_result
 from read_result2 import read_all_questions_and_answers
+from navigate_to_response_page import navigate_to_response_page
+from modules.datebase.create_db import create_db_and_tables
+from modules.datebase.save_db import save_data
 
-
+print("click_save_loop.py")
 def click_save_loop():
-    driver.get(URLCLICK)
+    print('Navigiere zur Ergebnisseite')
+    navigate_to_response_page()
     for _ in range(10): 
+        print("random_click.py")
         clickfunktion()
     
     read_result()
+    print("read_result.py", read_result())
     fragen_ergebnisse = read_all_questions_and_answers()
+    print("create_db_and_tables()")
+    create_db_and_tables()
+    print("save_data(fragen_ergebnisse)")
+    save_data(fragen_ergebnisse)
 
-    if fragen_ergebnisse:
-        print(fragen_ergebnisse)
+    print(fragen_ergebnisse)
 
-
-    
     
     # counter = 0
     # while counter < 150:  # Gesamtzahl der Durchläufe

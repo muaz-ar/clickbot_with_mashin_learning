@@ -1,5 +1,5 @@
+# /modules/configuration.py
 
-# Importing required modules
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 from dotenv import load_dotenv
@@ -22,4 +22,4 @@ driver = webdriver.Firefox(service=service, options=options)
 def by_xpath(xpath):
     return driver.find_element(By.XPATH, xpath)
 driver.get(URLLOGIN)
-print("urllogin:")
+print('Configuration')
