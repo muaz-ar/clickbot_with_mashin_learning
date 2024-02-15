@@ -7,7 +7,7 @@ def read_all_questions_and_answers():
     fragen_ergebnisse = []  # Liste zum Speichern der Ergebnisse für alle Fragen
 
     # Durchlaufen aller Fragen
-    for frage_index in range(4, 14):  # Startet bei 4, endet bei 13 für die CSS-Selektoren
+    for frage_index in range(4, 14):  
         # ID der Frage auslesen
         try:
             element_id = driver.find_element(By.CSS_SELECTOR, f"table.exercise-table:nth-child({frage_index}) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > span:nth-child(3)")
@@ -48,5 +48,4 @@ def read_all_questions_and_answers():
 
     return fragen_ergebnisse
 
-# Funktion aufrufen
-fragen_ergebnisse = read_all_questions_and_answers()
+

@@ -1,0 +1,35 @@
+FROM python:3.9-slim
+
+# Setzen Sie Umgebungsvariablen
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Installieren Sie systemabhängige Pakete
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends firefox-esr netcat \
+    && rm -rf /var/lib/apt/lists/*
+
+# Geckodriver installieren
+ARG GECKODRIVER_VERSION=0.30.0
+RUN apt-get update \
+    && apt-get install -y wget \
+    && wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz \
+    && tar -xzf geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz -C /usr/local/bin \
+    && rm geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz \
+    && apt-get purge -y wget \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Kopieren Sie die Anwendungsabhängigkeiten und installieren Sie sie
+COPY ./requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app
+
+# Kopieren des Start-Skripts und Ausführbar machen
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
+

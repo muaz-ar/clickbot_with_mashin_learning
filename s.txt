@@ -1,0 +1,23 @@
+Anwendungsfall: 
+schritt 1 diese daten sollen in eine DAtenbank gespeichert werden primarykey ID 
+schritt 2 clickfunktion iteriert über die fragen und gleicht ID von fragen mit datenbank ab 
+    wenn id übereinstimmt antworten von datenbank abrufen else randomantworten 
+schritt neue fragen wieder in datenbank kopieren 
+
+FRage1 :  wie muss ich die datenbank aufbauen 
+frage2 sollte ich 2 docker container nutzen um eine für mysql und die andere für python oder alles auf einem dockercontainer 
+frage3: eregibt mein anwendungsfall sinn  
+
+
+
+Fragen
+
+ID (Primärschlüssel, Integer oder String, abhängig von der ID-Struktur)
+Frage_Text (Optional, String, falls Sie den Text der Frage speichern möchten)
+Antworten
+
+Antwort_ID (Primärschlüssel, autoincrement)
+Frage_ID (Fremdschlüssel, verweist auf Fragen.ID)
+Richtigkeit (Boolean, gibt an, ob die Antwort richtig ist)
+Antwort_Index (Integer, die Position der Antwort für die Frage)
+

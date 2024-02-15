@@ -14,10 +14,8 @@ URLLOGIN = os.getenv('URLLOGIN')
 URLCLICK = os.getenv('URLCLICK')
 
 options = Options()
-gecko_path = '/snap/bin/firefox.geckodriver'
-service = Service(executable_path=gecko_path)
 options.headless = True
-driver = webdriver.Firefox(service=service, options=options)
+driver = webdriver.Firefox(options=options)
 
 def by_xpath(xpath):
     return driver.find_element(By.XPATH, xpath)

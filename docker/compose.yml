@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: meineDatenbank
+    volumes:
+      - ./docker/mysql_config/init.db.sql:/docker-entrypoint-initdb.d/init.db.sql
+  
+  app:
+    build: ./docker/dockerfile
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_NAME: meineDatenbank
+    depends_on:
+      - db
+    volumes:
+      - ./modules:/app/modules
+      - ./.env:/app/.env
