@@ -1,3 +1,5 @@
+# /modules/login.py
+
 from selenium.common.exceptions import NoSuchElementException
 from configuration import by_xpath, USER, KEY
 def login():
@@ -16,6 +18,3 @@ def login():
             pass
     click_button_if_exists('/html/body/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]/form/div[2]/span[2]/input')
     click_button_if_exists('/html/body/div[3]/div[1]/div[2]/div[2]/div[1]/div[2]/form/div[2]/span[2]/input')
-    
-
-
