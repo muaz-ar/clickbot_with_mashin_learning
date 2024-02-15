@@ -1,12 +1,13 @@
+#/modules/click_save_loop.py
 from selenium.common.exceptions import NoSuchElementException
 from configuration import driver, URLCLICK, by_xpath
 import time
-from random_click import clickfunktion
+from clickfunktion import clickfunktion
 from read_result import read_result
 from read_result2 import read_all_questions_and_answers
 from navigate_to_response_page import navigate_to_response_page
-from modules.datebase.create_db import create_db_and_tables
-from modules.datebase.save_db import save_data
+from datebase.create_db import create_db_and_tables
+from datebase.save_db import save_data
 
 print("click_save_loop.py")
 def click_save_loop():
