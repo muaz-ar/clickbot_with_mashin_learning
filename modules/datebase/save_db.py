@@ -15,6 +15,7 @@ def save_data(fragen_ergebnisse):
             # Antworten speichern
             for richtigkeit in frage['Antworten_Richtigkeit']:
                 c.execute('INSERT INTO antworten (id, richtigkeit) VALUES (?, ?)', (frage['ID'], richtigkeit))
+                
         else:
             print("vorhanden")
 

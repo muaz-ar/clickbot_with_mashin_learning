@@ -53,6 +53,19 @@ def clickfunktion():
 
         button_weiter_xpath = '/html/body/div[1]/div/div/main/div/div[1]/div[1]/div/form/div[3]/span/input'
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, button_weiter_xpath))).click()
+        return True
 
     except Exception as e:
         print(f"Fehler beim Ausführen der clickfunktion: {e}")
+        return False
+
+def click_multiple_times(times):
+    fehler_counter = 0
+    for _ in range(times):
+        erfolg = clickfunktion()
+        if not erfolg:
+            fehler_counter += 1
+            if fehler_counter >= 3:
+                print("Fehler beim Ausführen der clickfunktion 3 Mal aufgetreten.")
+                
+                break 
