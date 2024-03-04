@@ -3,9 +3,9 @@ from configuration import by_xpath, USER, KEY
 def login():
     print("Login...")
     user_bar = by_xpath('//*[@id="loginUser"]')
-    user_bar.send_keys(29177060)
+    user_bar.send_keys(USER)
     key_bar = by_xpath('//*[@id="loginPlaintextPassword"]')
-    key_bar.send_keys('Helga58!?')
+    key_bar.send_keys(KEY)
     button_login = by_xpath('/html/body/div[1]/div/div/main/div[4]/div/form/fieldset/div[3]/input')
     button_login.click()
     def click_button_if_exists(xpath):
